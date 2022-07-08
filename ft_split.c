@@ -71,9 +71,9 @@ static char	*return_word(char *word, char *str, char c)
 	return (word);
 }
 
-static char	**fill_word(char *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	const size_t	word_count = count_words(s, c);
+	const size_t	word_count = count_words((char *)s, c);
 	size_t			i;
 	char			**words;
 
@@ -87,7 +87,7 @@ static char	**fill_word(char *s, char c)
 			s++;
 		else
 		{
-			words[i] = return_word(words[i], s, c);
+			words[i] = return_word(words[i], (char *)s, c);
 			if (!words[i])
 			{
 				free_all(words);
@@ -97,15 +97,5 @@ static char	**fill_word(char *s, char c)
 		}
 	}
 	words[word_count] = 0;
-	return (words);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**words;
-
-	if (!s)
-		return (0);
-	words = fill_word((char *)s, c);
 	return (words);
 }

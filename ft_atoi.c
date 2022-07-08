@@ -17,8 +17,8 @@ static int	is_space(char c)
 
 int	ft_atoi(const char *str)
 {
-	int			sign;
-	long long	res;
+	int		sign;
+	long	res;
 
 	sign = 1;
 	while (is_space(*str))
@@ -35,7 +35,5 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
-	if (res < 0)
-		return ((sign + 1) / -2);
 	return ((int)(sign * res));
 }

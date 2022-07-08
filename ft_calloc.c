@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinholee <jinholee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:05:40 by jinholee          #+#    #+#             */
-/*   Updated: 2022/07/06 20:04:41 by jinholee         ###   ########.fr       */
+/*   Created: 2022/07/04 17:19:13 by jinholee          #+#    #+#             */
+/*   Updated: 2022/07/05 01:31:24 by jinholee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
+#include <sys/types.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
-	char	*sub;
+	void	*ptr;
 
-	if (!s || (unsigned long)start >= ft_strlen(s))
-		return (ft_strdup(""));
-	if (ft_strlen(s) < len)
-		len = ft_strlen(s);
-	sub = malloc(len + 1);
-	if (!sub)
+	ptr = malloc(count * size);
+	if (!ptr)
 		return (0);
-	i = 0;
-	while (i < len)
-	{
-		sub[i] = s[i + start];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
