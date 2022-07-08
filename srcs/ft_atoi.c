@@ -26,7 +26,7 @@ int	ft_atoi(const char *str)
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			sign *= -1;
+			sign = -1;
 		str++;
 	}
 	res = 0;
@@ -35,5 +35,7 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
+	if (res < 0)
+		return ((sign + 1) / -2);
 	return ((int)(sign * res));
 }
